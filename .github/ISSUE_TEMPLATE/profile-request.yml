@@ -1,0 +1,124 @@
+name: Add or update my profile
+description: For anyone who would rather not edit JSON. A maintainer will add you.
+title: 'Profile: '
+labels: [profile]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill in what you like and leave the rest blank. Nothing here is required
+        except your name and a sentence about your work.
+
+        If you are comfortable editing a file on GitHub, opening a pull request
+        against `data/people.json` is faster — see [CONTRIBUTING.md](../blob/main/CONTRIBUTING.md).
+
+  - type: input
+    id: name
+    attributes:
+      label: Your name
+    validations:
+      required: true
+
+  - type: input
+    id: pronouns
+    attributes:
+      label: Pronouns
+      placeholder: she/her, he/him, they/them
+
+  - type: dropdown
+    id: role
+    attributes:
+      label: Role
+      options:
+        - Undergraduate
+        - Master's
+        - PhD
+        - Postdoc
+        - Faculty
+        - Research staff
+        - Affiliate
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: Position
+      placeholder: 2nd-year PhD student / Associate Professor
+
+  - type: input
+    id: lab
+    attributes:
+      label: Lab
+      placeholder: Memory Systems Lab (leave blank if not in one lab)
+
+  - type: textarea
+    id: blurb
+    attributes:
+      label: A sentence or two about what you work on
+      placeholder: Written in the first person — this is shown on your card.
+    validations:
+      required: true
+
+  - type: input
+    id: methods
+    attributes:
+      label: Methods you have hands-on experience with
+      placeholder: EEG, fMRI, eye-tracking
+
+  - type: input
+    id: tools
+    attributes:
+      label: Software and analysis skills
+      placeholder: Python, MNE, R, lme4
+
+  - type: input
+    id: interests
+    attributes:
+      label: Research interests
+      placeholder: episodic memory, predictive coding
+
+  - type: input
+    id: populations
+    attributes:
+      label: Populations you work with
+      placeholder: healthy adults, children 4-8, older adults
+
+  - type: textarea
+    id: can-help
+    attributes:
+      label: What could you help a colleague with?
+      placeholder: |
+        The most useful field here. What would you happily answer a knock on the
+        door about? e.g. EEG preprocessing, ethics applications, scanner booking.
+
+  - type: textarea
+    id: looking-for
+    attributes:
+      label: What would you like help with?
+      placeholder: e.g. a modelling collaborator, stats for nested designs
+
+  - type: dropdown
+    id: collab
+    attributes:
+      label: Are you open to new collaborations?
+      options:
+        - Open to collaborate
+        - Selectively open
+        - Not looking right now
+    validations:
+      required: true
+
+  - type: input
+    id: email
+    attributes:
+      label: Contact email (optional)
+      placeholder: Leave blank if you would rather not have it on a public site.
+
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Consent
+      options:
+        - label: I am happy for the above to appear on the department's directory site, and I understand I can ask for it to be removed at any time.
+          required: true

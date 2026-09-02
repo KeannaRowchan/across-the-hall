@@ -1,0 +1,118 @@
+[
+  {
+    "id": "ask-montage",
+    "askerId": "p-mendes",
+    "title": "Sanity-check my child EEG montage before I order caps",
+    "detail": "I have a 32-channel layout for 5-7 year olds and no one in my lab has run paediatric EEG before. I mostly need someone to tell me if the coverage is wrong before I spend the budget.",
+    "size": "quick",
+    "kind": "review",
+    "needs": ["EEG", "children 4-8", "infants"],
+    "neededBy": "2026-09-15",
+    "status": "open",
+    "createdAt": "2026-08-18"
+  },
+  {
+    "id": "ask-stan-prior",
+    "askerId": "p-tanaka",
+    "title": "Is my prior on the learning rate defensible?",
+    "detail": "Fitting a simple RL model to EEG-derived trial estimates. I have a beta prior I cannot justify beyond 'it looked reasonable'. Fifteen minutes with someone who fits these properly would save me a reviewer comment.",
+    "size": "quick",
+    "kind": "question",
+    "needs": ["Stan", "reinforcement learning modelling", "model fitting"],
+    "neededBy": "2026-09-30",
+    "status": "open",
+    "createdAt": "2026-08-16"
+  },
+  {
+    "id": "ask-bids-convert",
+    "askerId": "p-nakamura",
+    "title": "Walk me through converting my behavioural data to BIDS",
+    "detail": "I want to structure my MSc data properly from the start rather than fixing it later. Happy to come to you and take notes.",
+    "size": "hour",
+    "kind": "teach",
+    "needs": ["BIDS", "BIDS conversion", "reproducible pipelines"],
+    "status": "open",
+    "createdAt": "2026-08-12"
+  },
+  {
+    "id": "ask-sleep-scoring",
+    "askerId": "p-halvorsen",
+    "title": "Borrow a sleep-scoring pipeline for a thesis chapter",
+    "detail": "My undergraduate thesis has one overnight condition and I do not have time to build scoring from scratch. Any existing pipeline I can run would do.",
+    "size": "quick",
+    "kind": "data",
+    "needs": ["sleep staging", "polysomnography", "YASA"],
+    "neededBy": "2026-10-31",
+    "status": "answered",
+    "answeredById": "p-osei",
+    "createdAt": "2026-08-05"
+  },
+  {
+    "id": "ask-meg-slot",
+    "askerId": "p-okonkwo",
+    "title": "Half an hour of MEG time to test whether an infant cap fits the array",
+    "detail": "Not a study, just a feasibility check with no participant. Needs someone who can authorise and supervise a short slot.",
+    "size": "hour",
+    "kind": "equipment",
+    "needs": ["MEG", "MEG acquisition", "MEG source analysis"],
+    "neededBy": "2026-09-20",
+    "status": "open",
+    "createdAt": "2026-08-17"
+  },
+  {
+    "id": "ask-older-adults",
+    "askerId": "p-halvorsen",
+    "title": "How do you recruit older adults here?",
+    "detail": "I need about 30 participants over 65 and no idea where to start. Even a pointer to whoever holds the participant list would help.",
+    "size": "quick",
+    "kind": "question",
+    "needs": ["older adults", "older adult recruitment"],
+    "status": "open",
+    "createdAt": "2026-08-15"
+  },
+  {
+    "id": "ask-school-access",
+    "askerId": "p-beaumont",
+    "title": "Anyone run studies in local schools before?",
+    "detail": "Looking for a conversation about what the board actually requires and how long approval took. Would rather learn from someone's mistakes than repeat them.",
+    "size": "quick",
+    "kind": "question",
+    "needs": ["school recruitment", "ethics for paediatric research", "working with child participants"],
+    "status": "open",
+    "createdAt": "2026-08-14"
+  },
+  {
+    "id": "ask-preprocessing-review",
+    "askerId": "p-abadi",
+    "title": "Two people to read a draft preprocessing standard",
+    "detail": "One page of proposed BIDS and preprocessing conventions for the department. I need it critiqued by people who would actually have to follow it, not by another technician.",
+    "size": "hour",
+    "kind": "review",
+    "needs": ["fMRIPrep", "Python", "MNE", "reproducible pipelines"],
+    "neededBy": "2026-09-30",
+    "status": "open",
+    "createdAt": "2026-08-05"
+  },
+  {
+    "id": "ask-modelling-chapter",
+    "askerId": "p-tanaka",
+    "title": "Co-author on the modelling chapter of my thesis",
+    "detail": "The honest version of my other ask. The final chapter needs a proper modelling collaborator, which is months of work, not minutes.",
+    "size": "ongoing",
+    "kind": "join",
+    "needs": ["reinforcement learning modelling", "Stan", "model comparison"],
+    "status": "open",
+    "createdAt": "2026-08-16"
+  },
+  {
+    "id": "ask-praat-teach",
+    "askerId": "p-mendes",
+    "title": "Teach me enough Praat to segment my stimuli",
+    "detail": "I have 200 recorded words to segment and have never used Praat. A morning of supervised practice would get me self-sufficient.",
+    "size": "halfday",
+    "kind": "teach",
+    "needs": ["Praat", "auditory stimulus design"],
+    "status": "open",
+    "createdAt": "2026-08-11"
+  }
+]

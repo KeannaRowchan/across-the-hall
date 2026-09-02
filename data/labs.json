@@ -1,0 +1,43 @@
+[
+  {
+    "id": "lab-attention",
+    "name": "Attention & Perception Lab",
+    "piId": "p-kovacs",
+    "focus": "How attention is captured and controlled in cluttered visual environments.",
+    "themes": ["visual attention", "distraction", "working memory"],
+    "methods": ["EEG", "eye-tracking", "psychophysics"],
+    "location": "Craine Hall, Room 312",
+    "equipment": ["64-channel EEG", "EyeLink 1000", "sound-attenuated booths"],
+    "website": "https://example.edu/attention"
+  },
+  {
+    "id": "lab-memory",
+    "name": "Memory Systems Lab",
+    "piId": "p-raghavan",
+    "focus": "How episodic memories are formed, consolidated and lost across the lifespan.",
+    "themes": ["episodic memory", "consolidation", "ageing"],
+    "methods": ["fMRI", "EEG", "polysomnography"],
+    "location": "Craine Hall, Room 208",
+    "equipment": ["overnight sleep suite", "ambulatory EEG", "shared 3T scanner time"]
+  },
+  {
+    "id": "lab-language",
+    "name": "Language & Development Lab",
+    "piId": "p-beaumont",
+    "focus": "How children acquire language, with a focus on bilingual word learning.",
+    "themes": ["language acquisition", "bilingualism", "speech perception"],
+    "methods": ["EEG", "eye-tracking", "behavioural testing"],
+    "location": "Craine Hall, Room 115",
+    "equipment": ["child-friendly testing rooms", "32-channel infant EEG", "portable eye-tracker"]
+  },
+  {
+    "id": "lab-comp",
+    "name": "Computational Cognition Lab",
+    "piId": "p-lindqvist",
+    "focus": "Formal models of learning and decision making, tested against neural data.",
+    "themes": ["decision making", "reinforcement learning", "predictive coding"],
+    "methods": ["MEG", "computational modelling"],
+    "location": "Craine Hall, Room 401",
+    "equipment": ["compute cluster allocation", "MEG analysis workstations"]
+  }
+]
