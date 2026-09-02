@@ -1,0 +1,50 @@
+{
+  "id": "p-kovacs",
+  "name": "Miriam Kovacs",
+  "pronouns": "she/her",
+  "role": "faculty",
+  "title": "Associate Professor",
+  "labId": "lab-attention",
+  "email": "m.kovacs@example.edu",
+  "joinedYear": 2014,
+  "interests": [
+    "visual attention",
+    "distraction",
+    "attentional capture"
+  ],
+  "methods": [
+    "EEG",
+    "eye-tracking",
+    "psychophysics"
+  ],
+  "tools": [
+    "MATLAB",
+    "Psychtoolbox",
+    "EEGLAB"
+  ],
+  "populations": [
+    "healthy adults"
+  ],
+  "blurb": "I study how irrelevant information grabs attention, mostly with EEG and eye-tracking. Always happy to talk through a design over coffee.",
+  "lookingFor": [
+    "computational modelling of attention",
+    "infant EEG expertise"
+  ],
+  "canHelpWith": [
+    "EEG experiment design",
+    "ERP preprocessing",
+    "grant feedback"
+  ],
+  "collabStatus": "open",
+  "links": [
+    {
+      "label": "Lab site",
+      "url": "https://example.edu/attention"
+    }
+  ],
+  "updatedAt": "2026-07-28",
+  "capacity": {
+    "note": "An hour or two a month for reading and advice. No new projects before the grant goes in.",
+    "freeFrom": "2026-11-01"
+  }
+}

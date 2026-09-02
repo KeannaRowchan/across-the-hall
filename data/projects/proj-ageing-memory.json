@@ -1,0 +1,18 @@
+{
+  "id": "proj-ageing-memory",
+  "title": "Associative memory deficits in healthy ageing",
+  "leadId": "p-halvorsen",
+  "labId": "lab-memory",
+  "stage": "design",
+  "summary": "Undergraduate thesis project comparing associative and item memory in older adults.",
+  "seekingCollaborators": true,
+  "needs": [
+    "older adult recruitment",
+    "R support"
+  ],
+  "themes": [
+    "episodic memory",
+    "ageing"
+  ],
+  "updatedAt": "2026-08-15"
+}

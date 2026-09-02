@@ -135,12 +135,19 @@ export default function App(): JSX.Element {
       </main>
 
       <footer className="foot">
-        Reading from <code>{repository.sourceLabel}</code>. To add or correct a profile, edit the
-        data files and open a pull request &mdash; see{' '}
+        {/* BASE_URL keeps this correct whether the site is served from a
+            repository subpath on GitHub Pages or from a domain root. */}
+        <a className="edit-link" href={`${import.meta.env.BASE_URL}admin/`}>
+          Add or edit your profile
+        </a>
+        <span className="foot-sep" aria-hidden="true">
+          ·
+        </span>
+        Every change is saved to{' '}
         <a href={REPO_URL} target="_blank" rel="noreferrer noopener">
           the repository
         </a>
-        .
+        , so nothing is ever lost. Reading from <code>{repository.sourceLabel}</code>.
       </footer>
     </div>
   )

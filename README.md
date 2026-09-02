@@ -60,11 +60,14 @@ Validates, typechecks, then builds the static site into `dist/`.
 ## Repository layout
 
 ```
-data/                  The department's actual content — edit these
-  people.json
-  labs.json
-  projects.json
-  asks.json
+data/                  The department's actual content — one file per record
+  people/              p-kovacs.json, p-tanaka.json, …
+  labs/
+  projects/
+  asks/
+public/
+  admin/               The form-based editor (Sveltia CMS)
+    config.yml         Defines the editing forms
 src/
   types.ts             The data model; read this first
   data/repository.ts   The single seam between UI and data source
@@ -75,10 +78,58 @@ scripts/
 .github/workflows/     Deploy to Pages; validate pull requests
 ```
 
+## Editing through the website
+
+Colleagues do not need to touch JSON. `/admin/` on the live site is a form-based
+editor (Sveltia CMS) that reads and writes this repository directly: someone signs
+in with GitHub, fills in a form, clicks save, and that becomes a commit. The
+deploy workflow then rebuilds the site, so the change is live in about ninety
+seconds.
+
+Editors still need a GitHub account — that is inherent to git-backed editing,
+because the commit is attributed to a person and GitHub's permissions do the
+authorising. They do not need to install anything.
+
+### One-time setup
+
+A static site cannot hold a secret, so the GitHub OAuth exchange has to happen
+somewhere with a server. A free Cloudflare Worker does it, and you deploy it once.
+
+1. **Deploy the auth worker.** Go to
+   [sveltia/sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth) and use
+   its deploy button (or `wrangler deploy` if you prefer). Copy the resulting
+   Worker URL, e.g. `https://sveltia-cms-auth.yourname.workers.dev`.
+
+2. **Register a GitHub OAuth app.** Settings → Developer settings → OAuth Apps →
+   New OAuth App. Set **Authorization callback URL** to your Worker URL with
+   `/callback` on the end. Generate a client secret.
+
+3. **Give the worker its credentials.** In the Cloudflare dashboard, on the
+   worker: Settings → Variables. Add `GITHUB_CLIENT_ID` and
+   `GITHUB_CLIENT_SECRET` (use the Encrypt button on the secret). Also add
+   `ALLOWED_DOMAINS` set to `keannarowchan.github.io` — optional but recommended,
+   as it stops other sites using your worker to mint tokens.
+
+4. **Point the CMS at it.** In [`public/admin/config.yml`](public/admin/config.yml),
+   replace the placeholder `base_url` with your Worker URL. Commit and push.
+
+Then give department members write access under Settings → Collaborators. Anyone
+without access can still sign in and propose changes; `publish_mode:
+editorial_workflow` in the config means every edit arrives as a pull request until
+you decide otherwise.
+
+### Why one file per record
+
+Each person, lab, project and ask is its own file under `data/<collection>/`,
+named after its `id`. That is deliberate: the CMS can show a list you click into
+rather than one enormous form, and two people editing different profiles never
+touch the same file, so their commits cannot conflict.
+
 ## Adding or updating a profile
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). Short version: edit `data/people.json`,
-open a pull request, and CI tells you if anything is wrong.
+Easiest route is the form at `/admin/` on the live site. If you would rather edit
+the files directly, see [CONTRIBUTING.md](CONTRIBUTING.md) — the data is plain
+JSON and CI tells you if anything is wrong either way.
 
 ## Adopting this for another department
 

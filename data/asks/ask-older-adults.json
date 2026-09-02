@@ -1,0 +1,14 @@
+{
+  "id": "ask-older-adults",
+  "askerId": "p-halvorsen",
+  "title": "How do you recruit older adults here?",
+  "detail": "I need about 30 participants over 65 and no idea where to start. Even a pointer to whoever holds the participant list would help.",
+  "size": "quick",
+  "kind": "question",
+  "needs": [
+    "older adults",
+    "older adult recruitment"
+  ],
+  "status": "open",
+  "createdAt": "2026-08-15"
+}

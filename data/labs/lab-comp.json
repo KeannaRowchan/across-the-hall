@@ -1,0 +1,20 @@
+{
+  "id": "lab-comp",
+  "name": "Computational Cognition Lab",
+  "piId": "p-lindqvist",
+  "focus": "Formal models of learning and decision making, tested against neural data.",
+  "themes": [
+    "decision making",
+    "reinforcement learning",
+    "predictive coding"
+  ],
+  "methods": [
+    "MEG",
+    "computational modelling"
+  ],
+  "location": "Craine Hall, Room 401",
+  "equipment": [
+    "compute cluster allocation",
+    "MEG analysis workstations"
+  ]
+}

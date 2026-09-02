@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Keep editors' drafts out of search results. -->
+    <meta name="robots" content="noindex" />
+    <title>Edit Across the Hall</title>
+  </head>
+  <body>
+    <!--
+      Sveltia CMS reads ./config.yml, authenticates the visitor with GitHub, and
+      commits their edits straight to the repository. Nothing here holds a
+      credential: the OAuth exchange happens in the worker named by `base_url`
+      in config.yml, so this page stays safe to serve publicly.
+
+      Pinned to an exact version deliberately. This page can write to the
+      repository, so it should never change underneath us without a review.
+      To upgrade, bump the version and re-test logging in and saving.
+    -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@sveltia/cms@0.205.1/dist/sveltia-cms.js"
+      type="module"
+    ></script>
+  </body>
+</html>

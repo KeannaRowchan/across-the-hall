@@ -1,0 +1,40 @@
+{
+  "id": "p-whitfield",
+  "name": "Jonah Whitfield",
+  "pronouns": "he/him",
+  "role": "phd",
+  "title": "3rd-year PhD candidate",
+  "labId": "lab-comp",
+  "email": "j.whitfield@example.edu",
+  "joinedYear": 2023,
+  "interests": [
+    "reinforcement learning",
+    "decision making",
+    "exploration"
+  ],
+  "methods": [
+    "computational modelling",
+    "MEG"
+  ],
+  "tools": [
+    "Python",
+    "Stan",
+    "PyTorch"
+  ],
+  "populations": [
+    "healthy adults"
+  ],
+  "blurb": "I fit RL models to behaviour and MEG. Slightly obsessed with model comparison done properly.",
+  "lookingFor": [
+    "datasets with trial-by-trial feedback",
+    "clinical decision-making data"
+  ],
+  "canHelpWith": [
+    "RL model fitting",
+    "Stan",
+    "model comparison"
+  ],
+  "collabStatus": "open",
+  "links": [],
+  "updatedAt": "2026-07-30"
+}

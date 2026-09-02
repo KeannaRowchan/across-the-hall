@@ -1,0 +1,15 @@
+{
+  "id": "ask-bids-convert",
+  "askerId": "p-nakamura",
+  "title": "Walk me through converting my behavioural data to BIDS",
+  "detail": "I want to structure my MSc data properly from the start rather than fixing it later. Happy to come to you and take notes.",
+  "size": "hour",
+  "kind": "teach",
+  "needs": [
+    "BIDS",
+    "BIDS conversion",
+    "reproducible pipelines"
+  ],
+  "status": "open",
+  "createdAt": "2026-08-12"
+}

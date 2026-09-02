@@ -1,0 +1,17 @@
+{
+  "id": "ask-preprocessing-review",
+  "askerId": "p-abadi",
+  "title": "Two people to read a draft preprocessing standard",
+  "detail": "One page of proposed BIDS and preprocessing conventions for the department. I need it critiqued by people who would actually have to follow it, not by another technician.",
+  "size": "hour",
+  "kind": "review",
+  "needs": [
+    "fMRIPrep",
+    "Python",
+    "MNE",
+    "reproducible pipelines"
+  ],
+  "neededBy": "2026-09-30",
+  "status": "open",
+  "createdAt": "2026-08-05"
+}

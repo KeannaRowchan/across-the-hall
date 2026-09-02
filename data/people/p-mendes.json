@@ -1,0 +1,41 @@
+{
+  "id": "p-mendes",
+  "name": "Sofia Mendes",
+  "pronouns": "she/her",
+  "role": "phd",
+  "title": "2nd-year PhD student",
+  "labId": "lab-language",
+  "email": "s.mendes@example.edu",
+  "joinedYear": 2024,
+  "interests": [
+    "bilingualism",
+    "word learning",
+    "executive function"
+  ],
+  "methods": [
+    "behavioural testing",
+    "eye-tracking"
+  ],
+  "tools": [
+    "R",
+    "jsPsych",
+    "lme4"
+  ],
+  "populations": [
+    "children 4-8",
+    "bilingual families"
+  ],
+  "blurb": "Studying how bilingual children learn new words. Recruiting from local schools and happy to share contacts.",
+  "lookingFor": [
+    "EEG training",
+    "someone who has run studies in schools before"
+  ],
+  "canHelpWith": [
+    "school recruitment",
+    "R and lme4",
+    "Portuguese/Spanish testing"
+  ],
+  "collabStatus": "open",
+  "links": [],
+  "updatedAt": "2026-08-18"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "ask-modelling-chapter",
+  "askerId": "p-tanaka",
+  "title": "Co-author on the modelling chapter of my thesis",
+  "detail": "The honest version of my other ask. The final chapter needs a proper modelling collaborator, which is months of work, not minutes.",
+  "size": "ongoing",
+  "kind": "join",
+  "needs": [
+    "reinforcement learning modelling",
+    "Stan",
+    "model comparison"
+  ],
+  "status": "open",
+  "createdAt": "2026-08-16"
+}

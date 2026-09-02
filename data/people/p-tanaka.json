@@ -1,0 +1,42 @@
+{
+  "id": "p-tanaka",
+  "name": "Yuki Tanaka",
+  "pronouns": "they/them",
+  "role": "phd",
+  "title": "4th-year PhD candidate",
+  "labId": "lab-attention",
+  "email": "y.tanaka@example.edu",
+  "joinedYear": 2022,
+  "interests": [
+    "attentional capture",
+    "reward learning"
+  ],
+  "methods": [
+    "EEG",
+    "eye-tracking"
+  ],
+  "tools": [
+    "Python",
+    "MNE",
+    "mixed-effects models"
+  ],
+  "populations": [
+    "healthy adults"
+  ],
+  "blurb": "Finishing my thesis on how reward history biases attention. I have written a lot of reusable EEG preprocessing code.",
+  "lookingFor": [
+    "modelling collaborator for my final chapter"
+  ],
+  "canHelpWith": [
+    "MNE preprocessing",
+    "Python for EEG",
+    "poster design"
+  ],
+  "collabStatus": "selective",
+  "links": [],
+  "updatedAt": "2026-08-16",
+  "capacity": {
+    "note": "Thesis submission in March, so very little until then.",
+    "freeFrom": "2027-04-01"
+  }
+}

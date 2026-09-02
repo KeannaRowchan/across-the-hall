@@ -1,0 +1,16 @@
+{
+  "id": "ask-meg-slot",
+  "askerId": "p-okonkwo",
+  "title": "Half an hour of MEG time to test whether an infant cap fits the array",
+  "detail": "Not a study, just a feasibility check with no participant. Needs someone who can authorise and supervise a short slot.",
+  "size": "hour",
+  "kind": "equipment",
+  "needs": [
+    "MEG",
+    "MEG acquisition",
+    "MEG source analysis"
+  ],
+  "neededBy": "2026-09-20",
+  "status": "open",
+  "createdAt": "2026-08-17"
+}

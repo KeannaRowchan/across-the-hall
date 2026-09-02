@@ -1,0 +1,18 @@
+{
+  "id": "proj-reward-attention",
+  "title": "Reward history and involuntary attention",
+  "leadId": "p-tanaka",
+  "labId": "lab-attention",
+  "stage": "analysis",
+  "summary": "EEG study on whether previously rewarded distractors keep capturing attention after reward stops. Data collected, needs a modelling angle.",
+  "seekingCollaborators": true,
+  "needs": [
+    "reinforcement learning modelling",
+    "Stan"
+  ],
+  "themes": [
+    "attentional capture",
+    "reward learning"
+  ],
+  "updatedAt": "2026-08-16"
+}

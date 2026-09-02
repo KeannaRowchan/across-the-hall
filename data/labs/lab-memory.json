@@ -1,0 +1,22 @@
+{
+  "id": "lab-memory",
+  "name": "Memory Systems Lab",
+  "piId": "p-raghavan",
+  "focus": "How episodic memories are formed, consolidated and lost across the lifespan.",
+  "themes": [
+    "episodic memory",
+    "consolidation",
+    "ageing"
+  ],
+  "methods": [
+    "fMRI",
+    "EEG",
+    "polysomnography"
+  ],
+  "location": "Craine Hall, Room 208",
+  "equipment": [
+    "overnight sleep suite",
+    "ambulatory EEG",
+    "shared 3T scanner time"
+  ]
+}

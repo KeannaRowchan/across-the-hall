@@ -1,0 +1,44 @@
+{
+  "id": "p-lindqvist",
+  "name": "Tomas Lindqvist",
+  "pronouns": "he/him",
+  "role": "faculty",
+  "title": "Associate Professor",
+  "labId": "lab-comp",
+  "email": "t.lindqvist@example.edu",
+  "joinedYear": 2016,
+  "interests": [
+    "decision making",
+    "reinforcement learning",
+    "predictive coding"
+  ],
+  "methods": [
+    "MEG",
+    "computational modelling"
+  ],
+  "tools": [
+    "Python",
+    "PyTorch",
+    "MNE",
+    "Stan"
+  ],
+  "populations": [
+    "healthy adults"
+  ],
+  "blurb": "I mostly build models and fit them to neural data. Genuinely keen to model other labs' datasets \u2014 send me your hard-to-explain effects.",
+  "lookingFor": [
+    "rich behavioural datasets",
+    "patient data"
+  ],
+  "canHelpWith": [
+    "model fitting",
+    "hierarchical Bayesian models",
+    "MEG source analysis"
+  ],
+  "collabStatus": "open",
+  "links": [],
+  "updatedAt": "2026-08-02",
+  "capacity": {
+    "note": "Always up for looking at someone else\u2019s model over coffee. That is the fun part."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "p-halvorsen",
+  "name": "Kai Halvorsen",
+  "pronouns": "they/them",
+  "role": "undergraduate",
+  "title": "4th-year thesis student",
+  "labId": "lab-memory",
+  "email": "k.halvorsen@example.edu",
+  "joinedYear": 2026,
+  "interests": [
+    "episodic memory",
+    "ageing"
+  ],
+  "methods": [
+    "behavioural testing"
+  ],
+  "tools": [
+    "R"
+  ],
+  "populations": [
+    "older adults"
+  ],
+  "blurb": "Undergraduate thesis on memory in older adults. Looking for grad school advice and anything I can volunteer on.",
+  "lookingFor": [
+    "grad school mentorship",
+    "volunteer RA work"
+  ],
+  "canHelpWith": [
+    "participant testing",
+    "literature searches"
+  ],
+  "collabStatus": "open",
+  "links": [],
+  "updatedAt": "2026-08-15"
+}

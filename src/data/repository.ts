@@ -9,11 +9,38 @@
  * means writing one new implementation here and touching no components.
  */
 
-import asksJson from '../../data/asks.json'
-import labsJson from '../../data/labs.json'
-import peopleJson from '../../data/people.json'
-import projectsJson from '../../data/projects.json'
 import type { Ask, Lab, Person, Project } from '../types'
+
+/**
+ * Each record is its own file under data/<collection>/.
+ *
+ * One file per record rather than one array per collection: the CMS can then
+ * present a list you click into instead of one enormous form, and two people
+ * editing different profiles never touch the same file, so their commits cannot
+ * conflict. Vite inlines all of these at build time, so the site stays static.
+ */
+const glob = <T,>(modules: Record<string, unknown>): T[] =>
+  Object.entries(modules)
+    // Sort by path so the bundle order is deterministic across builds.
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([, value]) => value as T)
+
+const peopleModules = import.meta.glob('../../data/people/*.json', {
+  eager: true,
+  import: 'default'
+})
+const labsModules = import.meta.glob('../../data/labs/*.json', {
+  eager: true,
+  import: 'default'
+})
+const projectsModules = import.meta.glob('../../data/projects/*.json', {
+  eager: true,
+  import: 'default'
+})
+const asksModules = import.meta.glob('../../data/asks/*.json', {
+  eager: true,
+  import: 'default'
+})
 
 export interface DirectorySnapshot {
   people: Person[]
@@ -118,12 +145,12 @@ function collectWarnings(
 
 /** Reads the JSON files bundled from /data. */
 export const jsonRepository: DirectoryRepository = {
-  sourceLabel: 'data/*.json',
+  sourceLabel: 'data/ (one file per record)',
   async load() {
-    const people = (peopleJson as Record<string, unknown>[]).map(normalisePerson)
-    const labs = (labsJson as Record<string, unknown>[]).map(normaliseLab)
-    const projects = (projectsJson as Record<string, unknown>[]).map(normaliseProject)
-    const asks = (asksJson as Record<string, unknown>[]).map(normaliseAsk)
+    const people = glob<Record<string, unknown>>(peopleModules).map(normalisePerson)
+    const labs = glob<Record<string, unknown>>(labsModules).map(normaliseLab)
+    const projects = glob<Record<string, unknown>>(projectsModules).map(normaliseProject)
+    const asks = glob<Record<string, unknown>>(asksModules).map(normaliseAsk)
 
     people.sort((a, b) => a.name.localeCompare(b.name))
     labs.sort((a, b) => a.name.localeCompare(b.name))

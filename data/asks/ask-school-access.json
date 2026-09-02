@@ -1,0 +1,15 @@
+{
+  "id": "ask-school-access",
+  "askerId": "p-beaumont",
+  "title": "Anyone run studies in local schools before?",
+  "detail": "Looking for a conversation about what the board actually requires and how long approval took. Would rather learn from someone's mistakes than repeat them.",
+  "size": "quick",
+  "kind": "question",
+  "needs": [
+    "school recruitment",
+    "ethics for paediatric research",
+    "working with child participants"
+  ],
+  "status": "open",
+  "createdAt": "2026-08-14"
+}

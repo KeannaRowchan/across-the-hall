@@ -1,0 +1,37 @@
+{
+  "id": "p-nakamura",
+  "name": "Erin Nakamura",
+  "pronouns": "she/her",
+  "role": "masters",
+  "title": "MSc student (2nd year)",
+  "labId": "lab-attention",
+  "email": "e.nakamura@example.edu",
+  "joinedYear": 2025,
+  "interests": [
+    "visual attention",
+    "working memory"
+  ],
+  "methods": [
+    "psychophysics",
+    "eye-tracking"
+  ],
+  "tools": [
+    "MATLAB",
+    "Psychtoolbox"
+  ],
+  "populations": [
+    "healthy adults"
+  ],
+  "blurb": "MSc on visual working memory capacity. Looking for a PhD direction and keen to sit in on other labs' meetings.",
+  "lookingFor": [
+    "PhD project ideas",
+    "exposure to fMRI"
+  ],
+  "canHelpWith": [
+    "Psychtoolbox",
+    "running participants"
+  ],
+  "collabStatus": "open",
+  "links": [],
+  "updatedAt": "2026-08-12"
+}

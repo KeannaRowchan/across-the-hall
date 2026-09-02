@@ -1,0 +1,16 @@
+{
+  "id": "ask-stan-prior",
+  "askerId": "p-tanaka",
+  "title": "Is my prior on the learning rate defensible?",
+  "detail": "Fitting a simple RL model to EEG-derived trial estimates. I have a beta prior I cannot justify beyond 'it looked reasonable'. Fifteen minutes with someone who fits these properly would save me a reviewer comment.",
+  "size": "quick",
+  "kind": "question",
+  "needs": [
+    "Stan",
+    "reinforcement learning modelling",
+    "model fitting"
+  ],
+  "neededBy": "2026-09-30",
+  "status": "open",
+  "createdAt": "2026-08-16"
+}

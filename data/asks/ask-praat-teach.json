@@ -1,0 +1,14 @@
+{
+  "id": "ask-praat-teach",
+  "askerId": "p-mendes",
+  "title": "Teach me enough Praat to segment my stimuli",
+  "detail": "I have 200 recorded words to segment and have never used Praat. A morning of supervised practice would get me self-sufficient.",
+  "size": "halfday",
+  "kind": "teach",
+  "needs": [
+    "Praat",
+    "auditory stimulus design"
+  ],
+  "status": "open",
+  "createdAt": "2026-08-11"
+}

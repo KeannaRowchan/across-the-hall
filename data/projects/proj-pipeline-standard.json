@@ -1,0 +1,16 @@
+{
+  "id": "proj-pipeline-standard",
+  "title": "Department-wide preprocessing standards",
+  "leadId": "p-abadi",
+  "stage": "idea",
+  "summary": "Proposal to agree on shared BIDS and preprocessing conventions so datasets can be reused across labs.",
+  "seekingCollaborators": true,
+  "needs": [
+    "buy-in from each lab",
+    "documentation help"
+  ],
+  "themes": [
+    "reproducible pipelines"
+  ],
+  "updatedAt": "2026-08-05"
+}

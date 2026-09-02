@@ -1,0 +1,15 @@
+{
+  "id": "proj-exploration-meg",
+  "title": "Neural signatures of exploration under uncertainty",
+  "leadId": "p-whitfield",
+  "labId": "lab-comp",
+  "stage": "analysis",
+  "summary": "MEG plus RL modelling of an explore/exploit bandit task. Analysis well underway.",
+  "seekingCollaborators": false,
+  "needs": [],
+  "themes": [
+    "reinforcement learning",
+    "decision making"
+  ],
+  "updatedAt": "2026-07-30"
+}

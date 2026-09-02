@@ -1,0 +1,17 @@
+{
+  "id": "ask-sleep-scoring",
+  "askerId": "p-halvorsen",
+  "title": "Borrow a sleep-scoring pipeline for a thesis chapter",
+  "detail": "My undergraduate thesis has one overnight condition and I do not have time to build scoring from scratch. Any existing pipeline I can run would do.",
+  "size": "quick",
+  "kind": "data",
+  "needs": [
+    "sleep staging",
+    "polysomnography",
+    "YASA"
+  ],
+  "neededBy": "2026-10-31",
+  "status": "answered",
+  "answeredById": "p-osei",
+  "createdAt": "2026-08-05"
+}

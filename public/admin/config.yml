@@ -1,0 +1,284 @@
+# Sveltia CMS configuration.
+#
+# This drives the editing forms at /across-the-hall/admin/. Every save is a real
+# commit to this repository, which triggers the deploy workflow, so an edit is
+# live in about ninety seconds.
+#
+# BEFORE THIS WORKS: replace base_url below with your own Cloudflare Worker URL.
+# See "Editing through the website" in README.md for the three setup steps.
+
+backend:
+  name: github
+  repo: KeannaRowchan/across-the-hall
+  branch: main
+  # The OAuth relay. A static site cannot hold a client secret, so the token
+  # exchange happens in this worker instead.
+  base_url: https://REPLACE-ME.workers.dev
+
+site_url: https://keannarowchan.github.io/across-the-hall/
+display_url: https://keannarowchan.github.io/across-the-hall/
+
+# No images are used yet, but the CMS expects somewhere to put them.
+media_folder: public/uploads
+public_folder: /across-the-hall/uploads
+
+# Every edit becomes a pull request instead of a direct push. Turn this off
+# once you trust contributors — but note the validate workflow runs either way,
+# so a malformed profile can never reach the live site.
+publish_mode: editorial_workflow
+
+collections:
+  # ---------------------------------------------------------------- people ---
+  - name: people
+    label: People
+    label_singular: Person
+    folder: data/people
+    format: json
+    extension: json
+    create: true
+    identifier_field: name
+    slug: '{{fields.id}}'
+    summary: '{{name}} — {{title}}'
+    sortable_fields: [name, role, updatedAt]
+    fields:
+      - label: ID
+        name: id
+        widget: string
+        hint: 'Lowercase, no spaces. "p-" then your surname works fine. This becomes the filename.'
+        pattern: ['^[a-z0-9-]+$', 'Lowercase letters, numbers and hyphens only']
+      - { label: Full name, name: name, widget: string }
+      - { label: Pronouns, name: pronouns, widget: string, required: false, hint: 'e.g. she/her, they/them' }
+      - label: Role
+        name: role
+        widget: select
+        options:
+          - { label: Undergraduate, value: undergraduate }
+          - { label: "Master's", value: masters }
+          - { label: PhD, value: phd }
+          - { label: Postdoc, value: postdoc }
+          - { label: Faculty, value: faculty }
+          - { label: Research staff, value: research-staff }
+          - { label: Affiliate, value: affiliate }
+      - { label: Position, name: title, widget: string, required: false, hint: 'Shown instead of the role. e.g. "2nd-year PhD student"' }
+      - label: Lab
+        name: labId
+        widget: relation
+        collection: labs
+        value_field: id
+        search_fields: [name]
+        display_fields: [name]
+        required: false
+        hint: 'Leave empty if you are not in one lab.'
+      - { label: Email, name: email, widget: string, required: false, hint: 'Optional. This site is public — leave blank if you would rather not publish it.' }
+      - { label: Year you joined, name: joinedYear, widget: number, required: false, value_type: int, min: 1950, max: 2100 }
+      - label: About you
+        name: blurb
+        widget: text
+        hint: 'One or two sentences, first person. This is your card on the directory.'
+      - { label: Research interests, name: interests, widget: list, required: false, hint: 'The questions you care about — "predictive coding", "word learning".' }
+      - { label: Methods, name: methods, widget: list, required: false, hint: 'Techniques you have hands-on experience with — EEG, MEG, fMRI.' }
+      - { label: Tools and analysis, name: tools, widget: list, required: false, hint: 'Software and stats — Python, MNE, R, lme4.' }
+      - { label: Populations, name: populations, widget: list, required: false, hint: 'Who you test — infants, children 4-8, older adults.' }
+      - label: Can help with
+        name: canHelpWith
+        widget: list
+        required: false
+        hint: 'The most useful field here. What would you happily answer a knock on the door about? Be specific — "20 minutes on your EEG design" beats "methods advice".'
+      - label: Looking for
+        name: lookingFor
+        widget: list
+        required: false
+        hint: 'Gaps a collaborator could fill. This is what makes you findable to someone with the missing skill.'
+      - label: Open to collaborate?
+        name: collabStatus
+        widget: select
+        default: open
+        options:
+          - { label: Open to collaborate, value: open }
+          - { label: Selectively open, value: selective }
+          - { label: Not looking right now, value: closed }
+        hint: 'Honest is better than flattering.'
+      - label: Time you have
+        name: capacity
+        widget: object
+        required: false
+        collapsed: true
+        hint: 'Optional, and an honest "very little until March" is more useful than a polite maybe.'
+        fields:
+          - { label: In your own words, name: note, widget: text }
+          - { label: Nothing before, name: freeFrom, widget: datetime, required: false, date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD' }
+      - label: Links
+        name: links
+        widget: list
+        required: false
+        collapsed: true
+        fields:
+          - { label: Label, name: label, widget: string }
+          - { label: URL, name: url, widget: string }
+      - label: Last updated
+        name: updatedAt
+        widget: datetime
+        date_format: 'YYYY-MM-DD'
+        time_format: false
+        format: 'YYYY-MM-DD'
+        hint: 'Set this to today whenever you edit. Profiles older than six months get flagged as possibly stale.'
+
+  # ----------------------------------------------------------------- asks ---
+  - name: asks
+    label: Asks
+    label_singular: Ask
+    folder: data/asks
+    format: json
+    extension: json
+    create: true
+    identifier_field: title
+    slug: '{{fields.id}}'
+    summary: '{{title}} ({{size}})'
+    sortable_fields: [title, size, createdAt]
+    fields:
+      - label: ID
+        name: id
+        widget: string
+        hint: 'Lowercase, no spaces. e.g. ask-eeg-montage'
+        pattern: ['^[a-z0-9-]+$', 'Lowercase letters, numbers and hyphens only']
+      - label: Who is asking
+        name: askerId
+        widget: relation
+        collection: people
+        value_field: id
+        search_fields: [name]
+        display_fields: [name]
+      - label: What do you need?
+        name: title
+        widget: string
+        hint: 'Phrase it as a specific request, not a topic. "Anyone into EEG?" gets nothing; "Sanity-check my montage before I order caps" gets answered.'
+      - label: Detail
+        name: detail
+        widget: text
+        hint: 'Two or three sentences. Say what you have already tried.'
+      - label: How long would this take?
+        name: size
+        widget: select
+        default: quick
+        options:
+          - { label: About 15 minutes, value: quick }
+          - { label: About an hour, value: hour }
+          - { label: Half a day, value: halfday }
+          - { label: Ongoing commitment, value: ongoing }
+        hint: 'Be honest and be small. A fifteen-minute ask gets answered; an open-ended one does not.'
+      - label: Kind of help
+        name: kind
+        widget: select
+        default: question
+        options:
+          - { label: Answer a question, value: question }
+          - { label: Look something over, value: review }
+          - { label: Show me how, value: teach }
+          - { label: Share data or code, value: data }
+          - { label: Equipment or facility time, value: equipment }
+          - { label: Join the project, value: join }
+      - label: Skills that would help
+        name: needs
+        widget: list
+        hint: 'This is what matches your ask to people. Be specific — "Stan" finds someone, "help with stats" does not.'
+      - { label: Needed by, name: neededBy, widget: datetime, required: false, date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD', hint: 'Optional. The board counts down and flags it inside three weeks.' }
+      - label: Status
+        name: status
+        widget: select
+        default: open
+        options:
+          - { label: Still open, value: open }
+          - { label: Answered, value: answered }
+      - label: Who helped
+        name: answeredById
+        widget: relation
+        collection: people
+        value_field: id
+        search_fields: [name]
+        display_fields: [name]
+        required: false
+        hint: 'Credit them. Small favours only stay repeatable if they are visible.'
+      - { label: Asked on, name: createdAt, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD' }
+
+  # -------------------------------------------------------------- projects ---
+  - name: projects
+    label: Projects
+    label_singular: Project
+    folder: data/projects
+    format: json
+    extension: json
+    create: true
+    identifier_field: title
+    slug: '{{fields.id}}'
+    summary: '{{title}}'
+    sortable_fields: [title, stage, updatedAt]
+    fields:
+      - label: ID
+        name: id
+        widget: string
+        pattern: ['^[a-z0-9-]+$', 'Lowercase letters, numbers and hyphens only']
+      - { label: Title, name: title, widget: string }
+      - label: Lead
+        name: leadId
+        widget: relation
+        collection: people
+        value_field: id
+        search_fields: [name]
+        display_fields: [name]
+      - label: Lab
+        name: labId
+        widget: relation
+        collection: labs
+        value_field: id
+        search_fields: [name]
+        display_fields: [name]
+        required: false
+      - label: Stage
+        name: stage
+        widget: select
+        options:
+          - { label: Idea, value: idea }
+          - { label: Design, value: design }
+          - { label: Collecting data, value: collecting }
+          - { label: Analysis, value: analysis }
+          - { label: Writing up, value: writing }
+          - { label: Published, value: published }
+        hint: 'Listing something at idea stage is encouraged — that is when a collaborator can still change the design.'
+      - { label: Summary, name: summary, widget: text }
+      - { label: 'Seeking collaborators?', name: seekingCollaborators, widget: boolean, default: true }
+      - { label: What the project needs, name: needs, widget: list, required: false, hint: 'Specific skills or methods. This puts you on the collaboration board.' }
+      - { label: Themes, name: themes, widget: list, required: false }
+      - { label: Last updated, name: updatedAt, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD' }
+
+  # ------------------------------------------------------------------ labs ---
+  - name: labs
+    label: Labs
+    label_singular: Lab
+    folder: data/labs
+    format: json
+    extension: json
+    create: true
+    identifier_field: name
+    slug: '{{fields.id}}'
+    summary: '{{name}}'
+    sortable_fields: [name]
+    fields:
+      - label: ID
+        name: id
+        widget: string
+        pattern: ['^[a-z0-9-]+$', 'Lowercase letters, numbers and hyphens only']
+      - { label: Lab name, name: name, widget: string }
+      - label: Principal investigator
+        name: piId
+        widget: relation
+        collection: people
+        value_field: id
+        search_fields: [name]
+        display_fields: [name]
+        hint: 'They must already exist under People.'
+      - { label: What the lab is about, name: focus, widget: text }
+      - { label: Themes, name: themes, widget: list, required: false }
+      - { label: Methods, name: methods, widget: list, required: false }
+      - { label: Building and room, name: location, widget: string, required: false, hint: 'So people can literally walk over.' }
+      - { label: Equipment and resources, name: equipment, widget: list, required: false, hint: 'Kit you could in principle share time on.' }
+      - { label: Website, name: website, widget: string, required: false }

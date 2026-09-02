@@ -1,0 +1,18 @@
+{
+  "id": "proj-bilingual-words",
+  "title": "Bilingual word learning in the classroom",
+  "leadId": "p-mendes",
+  "labId": "lab-language",
+  "stage": "design",
+  "summary": "School-based study of novel word retention in bilingual 5-7 year olds. Would like to add an EEG session for a subset.",
+  "seekingCollaborators": true,
+  "needs": [
+    "developmental EEG",
+    "small-N statistics"
+  ],
+  "themes": [
+    "bilingualism",
+    "word learning"
+  ],
+  "updatedAt": "2026-08-18"
+}

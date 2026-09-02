@@ -6,7 +6,7 @@
  * it on every PR, and `npm run build` runs it first.
  */
 
-import { readFileSync } from 'node:fs'
+import { readdirSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
@@ -30,25 +30,49 @@ const ASK_STATUS = ['open', 'answered']
 const errors = []
 const warnings = []
 
-function read(name) {
-  const path = join(root, 'data', name)
+/**
+ * Read every record in data/<collection>/. Each file holds one object, and the
+ * filename must match its `id` so the CMS and the repo agree on identity.
+ */
+function read(collection) {
+  const dir = join(root, 'data', collection)
+  let files
   try {
-    const parsed = JSON.parse(readFileSync(path, 'utf8'))
-    if (!Array.isArray(parsed)) {
-      errors.push(`${name}: top level must be an array`)
-      return []
-    }
-    return parsed
+    files = readdirSync(dir).filter((f) => f.endsWith('.json')).sort()
   } catch (err) {
-    errors.push(`${name}: ${err.message}`)
+    errors.push(`data/${collection}/: ${err.message}`)
     return []
   }
+  if (files.length === 0) {
+    warnings.push(`data/${collection}/ is empty`)
+  }
+  const records = []
+  for (const file of files) {
+    const where = `data/${collection}/${file}`
+    let parsed
+    try {
+      parsed = JSON.parse(readFileSync(join(dir, file), 'utf8'))
+    } catch (err) {
+      errors.push(`${where}: ${err.message}`)
+      continue
+    }
+    if (Array.isArray(parsed) || typeof parsed !== 'object' || parsed === null) {
+      errors.push(`${where}: must contain a single JSON object, not an array`)
+      continue
+    }
+    const expected = `${parsed.id}.json`
+    if (parsed.id && file !== expected) {
+      errors.push(`${where}: filename does not match id — should be ${expected}`)
+    }
+    records.push(parsed)
+  }
+  return records
 }
 
-const people = read('people.json')
-const labs = read('labs.json')
-const projects = read('projects.json')
-const asks = read('asks.json')
+const people = read('people')
+const labs = read('labs')
+const projects = read('projects')
+const asks = read('asks')
 
 function requireString(obj, field, where) {
   if (typeof obj[field] !== 'string' || obj[field].trim() === '') {
@@ -93,13 +117,13 @@ function checkUniqueIds(items, name) {
   return seen
 }
 
-const personIds = checkUniqueIds(people, 'people.json')
-const labIds = checkUniqueIds(labs, 'labs.json')
-checkUniqueIds(projects, 'projects.json')
-checkUniqueIds(asks, 'asks.json')
+const personIds = checkUniqueIds(people, 'data/people')
+const labIds = checkUniqueIds(labs, 'data/labs')
+checkUniqueIds(projects, 'data/projects')
+checkUniqueIds(asks, 'data/asks')
 
 for (const person of people) {
-  const where = `people.json [${person.id ?? '?'}]`
+  const where = `data/people/${person.id ?? '?'}.json`
   requireString(person, 'name', where)
   requireString(person, 'blurb', where)
   requireEnum(person, 'role', ROLES, where)
@@ -123,7 +147,7 @@ for (const person of people) {
 }
 
 for (const lab of labs) {
-  const where = `labs.json [${lab.id ?? '?'}]`
+  const where = `data/labs/${lab.id ?? '?'}.json`
   requireString(lab, 'name', where)
   requireString(lab, 'focus', where)
   requireString(lab, 'piId', where)
@@ -136,7 +160,7 @@ for (const lab of labs) {
 }
 
 for (const project of projects) {
-  const where = `projects.json [${project.id ?? '?'}]`
+  const where = `data/projects/${project.id ?? '?'}.json`
   requireString(project, 'title', where)
   requireString(project, 'summary', where)
   requireString(project, 'leadId', where)
@@ -159,7 +183,7 @@ for (const project of projects) {
 }
 
 for (const ask of asks) {
-  const where = `asks.json [${ask.id ?? '?'}]`
+  const where = `data/asks/${ask.id ?? '?'}.json`
   requireString(ask, 'title', where)
   requireString(ask, 'detail', where)
   requireString(ask, 'askerId', where)
@@ -187,7 +211,7 @@ for (const ask of asks) {
 // Capacity is optional, but a malformed date would silently mislead.
 for (const person of people) {
   if (person.capacity === undefined) continue
-  const where = `people.json [${person.id ?? '?'}] capacity`
+  const where = `data/people/${person.id ?? '?'}.json capacity`
   requireString(person.capacity, 'note', where)
   if (person.capacity.freeFrom !== undefined) requireIsoDate(person.capacity, 'freeFrom', where)
 }

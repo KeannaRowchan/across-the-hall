@@ -1,0 +1,45 @@
+{
+  "id": "p-raghavan",
+  "name": "Anil Raghavan",
+  "pronouns": "he/him",
+  "role": "faculty",
+  "title": "Professor",
+  "labId": "lab-memory",
+  "email": "a.raghavan@example.edu",
+  "joinedYear": 2008,
+  "interests": [
+    "episodic memory",
+    "consolidation",
+    "hippocampal function"
+  ],
+  "methods": [
+    "fMRI",
+    "behavioural testing"
+  ],
+  "tools": [
+    "Python",
+    "nilearn",
+    "MVPA",
+    "fMRIPrep"
+  ],
+  "populations": [
+    "healthy adults",
+    "older adults"
+  ],
+  "blurb": "Long-standing interest in how memories stabilise over sleep and time. Our lab has a lot of unused scanner-ready paradigms if someone wants to pick one up.",
+  "lookingFor": [
+    "sleep EEG collaboration",
+    "clinical populations"
+  ],
+  "canHelpWith": [
+    "fMRI design",
+    "MVPA pipelines",
+    "scanner logistics"
+  ],
+  "collabStatus": "open",
+  "links": [],
+  "updatedAt": "2026-06-11",
+  "capacity": {
+    "note": "Happy to be asked anything short. Genuinely no capacity to take on analysis myself."
+  }
+}

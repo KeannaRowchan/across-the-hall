@@ -1,0 +1,18 @@
+{
+  "id": "proj-sleep-consolidation",
+  "title": "Overnight consolidation of associative memories",
+  "leadId": "p-osei",
+  "labId": "lab-memory",
+  "stage": "collecting",
+  "summary": "Overnight sleep EEG with a paired-associates task. Room for a second memory paradigm in the same sessions.",
+  "seekingCollaborators": true,
+  "needs": [
+    "memory paradigm design",
+    "additional participant pool"
+  ],
+  "themes": [
+    "sleep and memory",
+    "consolidation"
+  ],
+  "updatedAt": "2026-08-09"
+}

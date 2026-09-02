@@ -1,0 +1,19 @@
+{
+  "id": "proj-infant-meg",
+  "title": "Feasibility of infant MEG for auditory paradigms",
+  "leadId": "p-okonkwo",
+  "labId": "lab-language",
+  "stage": "idea",
+  "summary": "Scoping whether our MEG setup can be adapted for infants. Very early \u2014 mostly needs people who have tried and failed at this before.",
+  "seekingCollaborators": true,
+  "needs": [
+    "MEG hardware expertise",
+    "infant testing experience",
+    "ethics guidance"
+  ],
+  "themes": [
+    "speech perception",
+    "auditory processing"
+  ],
+  "updatedAt": "2026-08-17"
+}

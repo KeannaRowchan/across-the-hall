@@ -1,0 +1,38 @@
+{
+  "id": "p-abadi",
+  "name": "Reza Abadi",
+  "pronouns": "he/him",
+  "role": "research-staff",
+  "title": "Research Technician, Neuroimaging Core",
+  "email": "r.abadi@example.edu",
+  "joinedYear": 2019,
+  "interests": [
+    "image quality",
+    "reproducible pipelines"
+  ],
+  "methods": [
+    "fMRI",
+    "MRI physics"
+  ],
+  "tools": [
+    "fMRIPrep",
+    "BIDS",
+    "Nipype",
+    "bash"
+  ],
+  "populations": [],
+  "blurb": "I keep the scanner pipelines running. If your preprocessing is behaving strangely, come find me before you lose a week.",
+  "lookingFor": [],
+  "canHelpWith": [
+    "BIDS conversion",
+    "fMRIPrep troubleshooting",
+    "scanner booking",
+    "QC"
+  ],
+  "collabStatus": "open",
+  "links": [],
+  "updatedAt": "2026-08-05",
+  "capacity": {
+    "note": "This is my actual job \u2014 come find me. Mondays and Wednesdays are quietest."
+  }
+}

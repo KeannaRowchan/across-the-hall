@@ -1,0 +1,16 @@
+{
+  "id": "ask-montage",
+  "askerId": "p-mendes",
+  "title": "Sanity-check my child EEG montage before I order caps",
+  "detail": "I have a 32-channel layout for 5-7 year olds and no one in my lab has run paediatric EEG before. I mostly need someone to tell me if the coverage is wrong before I spend the budget.",
+  "size": "quick",
+  "kind": "review",
+  "needs": [
+    "EEG",
+    "children 4-8",
+    "infants"
+  ],
+  "neededBy": "2026-09-15",
+  "status": "open",
+  "createdAt": "2026-08-18"
+}

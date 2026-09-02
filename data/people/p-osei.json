@@ -1,0 +1,43 @@
+{
+  "id": "p-osei",
+  "name": "Daniel Osei",
+  "pronouns": "he/him",
+  "role": "postdoc",
+  "title": "Postdoctoral Fellow",
+  "labId": "lab-memory",
+  "email": "d.osei@example.edu",
+  "joinedYear": 2024,
+  "interests": [
+    "sleep and memory",
+    "consolidation",
+    "oscillations"
+  ],
+  "methods": [
+    "EEG",
+    "polysomnography",
+    "fMRI"
+  ],
+  "tools": [
+    "Python",
+    "MNE",
+    "YASA"
+  ],
+  "populations": [
+    "healthy adults"
+  ],
+  "blurb": "I run overnight sleep EEG studies. I have a scoring pipeline that other labs are welcome to use.",
+  "lookingFor": [
+    "memory paradigms suitable for overnight designs"
+  ],
+  "canHelpWith": [
+    "sleep staging",
+    "spindle/SO detection",
+    "overnight study logistics"
+  ],
+  "collabStatus": "open",
+  "links": [],
+  "updatedAt": "2026-08-09",
+  "capacity": {
+    "note": "Two afternoons a month. Sleep scoring questions are quick for me, so ask freely."
+  }
+}

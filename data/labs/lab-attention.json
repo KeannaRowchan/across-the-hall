@@ -1,0 +1,23 @@
+{
+  "id": "lab-attention",
+  "name": "Attention & Perception Lab",
+  "piId": "p-kovacs",
+  "focus": "How attention is captured and controlled in cluttered visual environments.",
+  "themes": [
+    "visual attention",
+    "distraction",
+    "working memory"
+  ],
+  "methods": [
+    "EEG",
+    "eye-tracking",
+    "psychophysics"
+  ],
+  "location": "Craine Hall, Room 312",
+  "equipment": [
+    "64-channel EEG",
+    "EyeLink 1000",
+    "sound-attenuated booths"
+  ],
+  "website": "https://example.edu/attention"
+}

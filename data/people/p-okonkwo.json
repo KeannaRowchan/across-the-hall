@@ -1,0 +1,44 @@
+{
+  "id": "p-okonkwo",
+  "name": "Amara Okonkwo",
+  "pronouns": "she/her",
+  "role": "postdoc",
+  "title": "Postdoctoral Fellow",
+  "labId": "lab-language",
+  "email": "a.okonkwo@example.edu",
+  "joinedYear": 2025,
+  "interests": [
+    "speech perception",
+    "language acquisition",
+    "auditory processing"
+  ],
+  "methods": [
+    "MEG",
+    "EEG"
+  ],
+  "tools": [
+    "Python",
+    "MNE",
+    "Praat"
+  ],
+  "populations": [
+    "infants",
+    "healthy adults"
+  ],
+  "blurb": "I came from a MEG-heavy lab and am adapting infant auditory paradigms here. Very open to joint projects.",
+  "lookingFor": [
+    "infant MEG feasibility",
+    "stats for small-N designs"
+  ],
+  "canHelpWith": [
+    "MEG acquisition",
+    "auditory stimulus design",
+    "Praat"
+  ],
+  "collabStatus": "open",
+  "links": [],
+  "updatedAt": "2026-08-17",
+  "capacity": {
+    "note": "Building up local collaborations, so I will make time for most things this term."
+  }
+}

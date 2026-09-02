@@ -1,13 +1,22 @@
 # Adding yourself to Across the Hall
 
-You do not need to install anything, and you do not need to know git. Everything
-below can be done in a web browser.
+**The easy way:** go to the live site and click **Add or edit your profile** in the
+footer, or visit `/admin/` directly. Sign in with GitHub, fill in the form, click
+save. That is it — your change is live in about a minute, and the form explains
+every field as you go.
+
+You need a GitHub account (free, two minutes) but nothing installed.
+
+The rest of this document is for people who would rather edit the files directly.
+Both routes produce exactly the same result and both are checked by CI.
+
+---
 
 ## Add or update your profile
 
-1. Open [`data/people.json`](data/people.json) on GitHub.
+1. Open [`data/people/`](data/people) on GitHub and add a new file named after your id, e.g. `p-yourlastname.json`.
 2. Click the pencil icon (**Edit this file**).
-3. Copy the template below, paste it into the list, and fill it in.
+3. Copy the template below into a new file named `<your-id>.json` and fill it in. Each record is its own file, and the filename must match the `id`.
 4. Scroll down, describe your change in a sentence, and click
    **Propose changes**, then **Create pull request**.
 
@@ -49,7 +58,7 @@ Everything else is optional and can be left out entirely.
 | `id` | Unique, lowercase, no spaces. `p-` then your surname works fine. |
 | `role` | One of `undergraduate`, `masters`, `phd`, `postdoc`, `faculty`, `research-staff`, `affiliate`. |
 | `title` | Free text, shown instead of the role when present. |
-| `labId` | Must match an `id` in [`data/labs.json`](data/labs.json). Omit if you aren't in one lab. |
+| `labId` | Must match an `id` in [`data/labs/`](data/labs). Omit if you aren't in one lab. |
 | `interests` | The *questions* you care about — "predictive coding", "word learning". |
 | `methods` | Acquisition techniques you have hands-on experience with — "EEG", "MEG", "fMRI". |
 | `tools` | Software and analysis skills — "Python", "MNE", "lme4". |
@@ -68,12 +77,12 @@ completeness. Before inventing a tag, check whether the term already appears in
 
 ## Add a lab
 
-Edit [`data/labs.json`](data/labs.json). `piId` must match a person who already
+Add a file under [`data/labs/`](data/labs). `piId` must match a person who already
 exists in `people.json`, so add the PI first if they aren't listed.
 
 ## Add a project
 
-Edit [`data/projects.json`](data/projects.json). `leadId` must match someone in
+Add a file under [`data/projects/`](data/projects). `leadId` must match someone in
 `people.json`.
 
 Set `seekingCollaborators` to `true` and list what you need in `needs` — this is
@@ -86,8 +95,8 @@ at which a collaborator can still change the design.
 
 ## Post an ask
 
-Edit [`data/asks.json`](data/asks.json). This is the most useful file in the
-repository and the one to reach for first.
+Add a file under [`data/asks/`](data/asks). This is the most useful collection
+in the repository and the one to reach for first.
 
 ```json
 {

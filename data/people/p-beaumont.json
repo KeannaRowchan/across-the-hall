@@ -1,0 +1,43 @@
+{
+  "id": "p-beaumont",
+  "name": "Claire Beaumont",
+  "pronouns": "she/her",
+  "role": "faculty",
+  "title": "Assistant Professor",
+  "labId": "lab-language",
+  "email": "c.beaumont@example.edu",
+  "joinedYear": 2021,
+  "interests": [
+    "language acquisition",
+    "word learning",
+    "bilingualism"
+  ],
+  "methods": [
+    "EEG",
+    "eye-tracking",
+    "behavioural testing"
+  ],
+  "tools": [
+    "R",
+    "lme4",
+    "jsPsych"
+  ],
+  "populations": [
+    "children 4-8",
+    "infants"
+  ],
+  "blurb": "New-ish to the department. I run developmental EEG with young children and am actively building local collaborations.",
+  "lookingFor": [
+    "adult comparison samples",
+    "MEG expertise",
+    "stats support for nested designs"
+  ],
+  "canHelpWith": [
+    "working with child participants",
+    "ethics for paediatric research",
+    "jsPsych"
+  ],
+  "collabStatus": "open",
+  "links": [],
+  "updatedAt": "2026-08-14"
+}

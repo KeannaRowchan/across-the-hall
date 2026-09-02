@@ -1,0 +1,22 @@
+{
+  "id": "lab-language",
+  "name": "Language & Development Lab",
+  "piId": "p-beaumont",
+  "focus": "How children acquire language, with a focus on bilingual word learning.",
+  "themes": [
+    "language acquisition",
+    "bilingualism",
+    "speech perception"
+  ],
+  "methods": [
+    "EEG",
+    "eye-tracking",
+    "behavioural testing"
+  ],
+  "location": "Craine Hall, Room 115",
+  "equipment": [
+    "child-friendly testing rooms",
+    "32-channel infant EEG",
+    "portable eye-tracker"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "proj-wm-capacity",
+  "title": "Visual working memory capacity and distractor filtering",
+  "leadId": "p-nakamura",
+  "labId": "lab-attention",
+  "stage": "collecting",
+  "summary": "Psychophysics on filtering efficiency. Could extend to fMRI if a lab with scanner time is interested.",
+  "seekingCollaborators": true,
+  "needs": [
+    "fMRI expertise",
+    "scanner time"
+  ],
+  "themes": [
+    "working memory",
+    "visual attention"
+  ],
+  "updatedAt": "2026-08-12"
+}
