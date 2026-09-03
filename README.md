@@ -80,6 +80,12 @@ scripts/
 
 ## Editing through the website
 
+> **Status: not yet enabled.** The editor at `/admin/` is built and committed, but
+> `base_url` in [`public/admin/config.yml`](public/admin/config.yml) is still a
+> placeholder, so signing in will fail until the one-time setup below is done.
+> Until then the site's "Add or edit your profile" link goes to a GitHub issue
+> form instead, which needs no setup.
+
 Colleagues do not need to touch JSON. `/admin/` on the live site is a form-based
 editor (Sveltia CMS) that reads and writes this repository directly: someone signs
 in with GitHub, fills in a form, clicks save, and that becomes a commit. The

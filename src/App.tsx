@@ -11,6 +11,19 @@ type TabId = 'people' | 'asks' | 'projects' | 'labs'
 
 const REPO_URL = 'https://github.com/KeannaRowchan/across-the-hall'
 
+/**
+ * Where "add me" points.
+ *
+ * A GitHub issue form: friendly fields, a consent checkbox, and no JSON. It
+ * works with no setup beyond the repository itself.
+ *
+ * The form editor at /admin/ is a nicer experience but needs an OAuth relay
+ * deployed first, so it stays unlinked until `base_url` in
+ * public/admin/config.yml points at a real worker. Pointing visitors at a login
+ * that cannot succeed is worse than not offering it.
+ */
+const ADD_ME_URL = `${REPO_URL}/issues/new?template=profile-request.yml`
+
 export default function App(): JSX.Element {
   const { data, error, loading } = useDirectory()
   const [tab, setTab] = useState<TabId>('people')
@@ -135,9 +148,7 @@ export default function App(): JSX.Element {
       </main>
 
       <footer className="foot">
-        {/* BASE_URL keeps this correct whether the site is served from a
-            repository subpath on GitHub Pages or from a domain root. */}
-        <a className="edit-link" href={`${import.meta.env.BASE_URL}admin/`}>
+        <a className="edit-link" href={ADD_ME_URL} target="_blank" rel="noreferrer noopener">
           Add or edit your profile
         </a>
         <span className="foot-sep" aria-hidden="true">
