@@ -1,0 +1,442 @@
+/* ============================================================
+   The hallway landing scene.
+
+   A real CSS 3D room rather than a drawing: five surfaces placed in space and
+   viewed through a perspective camera. That is what lets the door swing on its
+   hinge correctly and the walls converge on their own, instead of being faked
+   with trapezoids that would break the moment anything moved.
+   ============================================================ */
+
+.hall-stage {
+  /* The near end of the corridor is the viewport, so the walls run off the
+     edges of the screen and you are standing in it rather than looking at a
+     box. Depth is in px because it has to mean something to `perspective`. */
+  --hall-w: 100vw;
+  --hall-h: 100vh;
+  --hall-d: 620px;
+  --door-w: 380px;
+  --door-h: 540px;
+
+  --wall: #cbd2cc;
+  --wall-lit: #dde2dc;
+  --wainscot: #8f9a92;
+  --ceil: #eef0ec;
+  --floor-a: #b9bfbb;
+  --floor-b: #a9b0ac;
+  --locker: #7f8d92;
+  --locker-edge: #6d7a7f;
+  --wood: #9a6338;
+  --wood-dark: #7d4e2b;
+  --wood-light: #b0764a;
+  --spill: 246, 224, 178;
+  --light: 255, 250, 232;
+
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: #6f7873;
+  perspective: 1300px;
+  perspective-origin: 50% 50%;
+  display: grid;
+  place-items: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .hall-stage {
+    --wall: #2f3a3c;
+    --wall-lit: #3a4649;
+    --wainscot: #232c2e;
+    --ceil: #263032;
+    --floor-a: #222b2d;
+    --floor-b: #1c2426;
+    --locker: #2b3639;
+    --locker-edge: #1f292b;
+    --wood: #7b4d2b;
+    --wood-dark: #5f3a20;
+    --wood-light: #96613a;
+    background: #131a1b;
+  }
+}
+
+.hall-room {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--hall-w);
+  height: var(--hall-h);
+  transform-style: preserve-3d;
+  transform: translate(-50%, -50%) translateZ(0);
+  transition: transform 1500ms cubic-bezier(0.5, 0, 0.7, 1);
+}
+
+/* Walking through: the camera pushes past the doorway. */
+.hall-room.is-entering {
+  transform: translate(-50%, -50%) translateZ(700px);
+}
+
+.surface {
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+/* ---------- the five surfaces ---------- */
+
+.back-wall {
+  width: var(--hall-w);
+  height: var(--hall-h);
+  transform: translateZ(calc(var(--hall-d) * -1));
+  background:
+    linear-gradient(to bottom, var(--wall-lit) 0%, var(--wall) 62%, var(--wainscot) 62%, var(--wainscot) 100%);
+}
+
+.ceiling {
+  width: var(--hall-w);
+  height: var(--hall-d);
+  top: 0;
+  transform-origin: top center;
+  transform: rotateX(90deg) translateZ(0) translateY(calc(var(--hall-d) * -1));
+  background: linear-gradient(to top, var(--ceil), #f6f7f4);
+}
+
+@media (prefers-color-scheme: dark) {
+  .ceiling { background: linear-gradient(to top, var(--ceil), #1b2325); }
+}
+
+.floor {
+  width: var(--hall-w);
+  height: var(--hall-d);
+  bottom: 0;
+  transform-origin: bottom center;
+  transform: rotateX(-90deg) translateZ(0) translateY(var(--hall-d));
+  background:
+    /* speckle, the way institutional flooring always is */
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.16) 0 1px, transparent 2px),
+    radial-gradient(circle at 70% 60%, rgba(0, 0, 0, 0.12) 0 1px, transparent 2px),
+    radial-gradient(circle at 45% 80%, rgba(255, 255, 255, 0.1) 0 1px, transparent 2px),
+    linear-gradient(to bottom, var(--floor-b), var(--floor-a));
+  background-size: 26px 26px, 34px 34px, 19px 19px, 100% 100%;
+}
+
+.wall {
+  width: var(--hall-d);
+  height: var(--hall-h);
+  top: 0;
+  background:
+    linear-gradient(to bottom, var(--wall-lit) 0%, var(--wall) 62%, var(--wainscot) 62%, var(--wainscot) 100%);
+}
+
+.wall-left {
+  left: 0;
+  transform-origin: left center;
+  transform: rotateY(90deg) translateZ(0);
+}
+
+.wall-right {
+  right: 0;
+  transform-origin: right center;
+  transform: rotateY(-90deg) translateZ(0);
+}
+
+/* Lockers, as a repeating band along the lower half of each side wall. */
+.lockers {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30%;
+  height: 32%;
+  background:
+    repeating-linear-gradient(
+      to right,
+      var(--locker) 0 46px,
+      var(--locker-edge) 46px 50px
+    );
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.12), inset 0 -3px 6px rgba(0, 0, 0, 0.25);
+}
+
+/* ---------- neighbouring doors ---------- */
+
+.neighbour-door {
+  position: absolute;
+  width: 132px;
+  height: 46%;
+  bottom: 0;
+  background: linear-gradient(to right, var(--wood-dark), var(--wood));
+  box-shadow:
+    inset 0 0 0 3px rgba(0, 0, 0, 0.2),
+    inset 0 0 26px rgba(0, 0, 0, 0.32);
+}
+
+.neighbour-handle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d8c48a;
+}
+
+/* ---------- the doorway behind the door ---------- */
+
+.doorway {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: var(--door-w);
+  height: var(--door-h);
+  transform: translateX(-50%);
+  background: #2a2320;
+  overflow: hidden;
+}
+
+.doorway-light {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 60%,
+    rgba(var(--spill), 0.95) 0%,
+    rgba(var(--spill), 0.6) 35%,
+    rgba(var(--spill), 0.12) 70%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 900ms ease 220ms;
+}
+
+.door.is-open ~ .doorway .doorway-light,
+.doorway:has(~ .door.is-open) .doorway-light {
+  opacity: 1;
+}
+
+/* ---------- the door ---------- */
+
+.door {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: var(--door-w);
+  height: var(--door-h);
+  margin-left: calc(var(--door-w) / -2);
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  background:
+    linear-gradient(to right, rgba(0, 0, 0, 0.22) 0 6px, transparent 6px),
+    linear-gradient(to bottom, var(--wood-light) 0%, var(--wood) 45%, var(--wood-dark) 100%);
+  box-shadow:
+    inset 0 0 0 3px rgba(0, 0, 0, 0.18),
+    0 12px 28px rgba(0, 0, 0, 0.35);
+  transition: transform 1100ms cubic-bezier(0.34, 0.9, 0.4, 1);
+}
+
+.door:hover {
+  filter: brightness(1.06);
+}
+
+.door:focus-visible {
+  outline: 3px solid #ffd979;
+  outline-offset: 4px;
+}
+
+/* The swing. Hinged on the left, opening away from the viewer. */
+.door.is-open {
+  transform: rotateY(-88deg);
+  box-shadow: none;
+}
+
+.door-panel {
+  position: absolute;
+  left: 14%;
+  width: 72%;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.13);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.28), 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.door-panel-top { top: 6%; height: 12%; }
+.door-panel-bottom { bottom: 6%; height: 26%; }
+
+.door-window {
+  position: absolute;
+  left: 22%;
+  top: 22%;
+  width: 56%;
+  height: 26%;
+  border-radius: 2px;
+  background: linear-gradient(150deg, rgba(214, 232, 226, 0.92), rgba(150, 178, 172, 0.85));
+  box-shadow: inset 0 0 0 4px var(--wood-dark), inset 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.door-handle {
+  position: absolute;
+  right: 16px;
+  top: 56%;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f6e6ae, #b99a4e);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+}
+
+/* ---------- the hanging sign ---------- */
+
+.sign {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  /* Sits proud of the door so it reads clearly and swings with it. */
+  transform: translateX(-50%) translateZ(26px);
+  transform-style: preserve-3d;
+  display: block;
+  width: 300px;
+}
+
+.sign-chain {
+  position: absolute;
+  top: -22px;
+  width: 2px;
+  height: 22px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), rgba(120, 100, 60, 0.9));
+}
+
+.sign-chain-left { left: 32px; }
+.sign-chain-right { right: 32px; }
+
+.sign-board {
+  display: block;
+  padding: 14px 16px 13px;
+  text-align: center;
+  border-radius: 3px;
+  background: linear-gradient(to bottom, #fdfaf1, #eee5d2);
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 2px rgba(0, 0, 0, 0.1),
+    inset 0 0 0 6px rgba(255, 255, 255, 0.6);
+  transform-origin: top center;
+  animation: sign-settle 5s ease-in-out infinite;
+}
+
+.sign-title {
+  display: block;
+  font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #22201c;
+  line-height: 1.1;
+}
+
+.sign-sub {
+  display: block;
+  margin-top: 7px;
+  font-size: 12.5px;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  color: #6a6155;
+}
+
+/* A barely-there sway, as though the corridor has a draught. */
+@keyframes sign-settle {
+  0%, 100% { transform: rotate(-0.7deg); }
+  50% { transform: rotate(0.7deg); }
+}
+
+/* ---------- hint ---------- */
+
+.hall-hint {
+  position: absolute;
+  bottom: 7%;
+  margin: 0;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: rgba(16, 20, 18, 0.5);
+  color: #f2efe6;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  backdrop-filter: blur(3px);
+  animation: hint-pulse 2.6s ease-in-out infinite;
+  transition: opacity 400ms ease;
+  pointer-events: none;
+}
+
+.hall-hint.is-hidden { opacity: 0; }
+
+@keyframes hint-pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* ---------- smaller screens ---------- */
+
+@media (max-width: 760px) {
+  .hall-stage {
+    --hall-d: 430px;
+    --door-w: 260px;
+    --door-h: 380px;
+    perspective: 900px;
+  }
+  .sign { width: 220px; }
+  .sign-title { font-size: 22px; }
+  .sign-sub { font-size: 10px; }
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .hall-room,
+  .door,
+  .doorway-light { transition: none; }
+  .sign-board,
+  .hall-hint { animation: none; }
+}
+
+
+/* ---------- ceiling lights ---------- */
+
+.ceiling-light {
+  position: absolute;
+  left: 50%;
+  width: 22%;
+  height: 26px;
+  transform: translateX(-50%);
+  border-radius: 3px;
+  background: linear-gradient(to bottom, #ffffff, rgba(var(--light), 0.86));
+  box-shadow: 0 0 32px 12px rgba(var(--light), 0.55);
+}
+
+@media (prefers-color-scheme: dark) {
+  .ceiling-light {
+    background: linear-gradient(to bottom, #f2ead2, rgba(var(--light), 0.6));
+    box-shadow: 0 0 40px 16px rgba(var(--light), 0.28);
+  }
+}
+
+/* A vignette so the corridor falls away at the edges rather than ending flat
+   against the viewport. Sits above the 3D scene and ignores pointer events so
+   the door underneath stays clickable. */
+.hall-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    transparent 34%,
+    rgba(10, 14, 13, 0.16) 68%,
+    rgba(10, 14, 13, 0.44) 100%
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  .hall-stage::after {
+    background: radial-gradient(
+      ellipse at 50% 50%,
+      transparent 28%,
+      rgba(0, 0, 0, 0.34) 62%,
+      rgba(0, 0, 0, 0.72) 100%
+    );
+  }
+}

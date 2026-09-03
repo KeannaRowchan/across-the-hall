@@ -946,3 +946,18 @@ button.card:hover {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
+
+/* ---------- Back to the hallway ---------- */
+.back-to-hall {
+  background: none;
+  border: none;
+  padding: 0 12px 0 0;
+  margin-right: 4px;
+  color: var(--text-faint);
+  font-size: 13px;
+  border-right: 1px solid var(--border);
+}
+
+.back-to-hall:hover {
+  color: var(--accent-text);
+}
