@@ -103,7 +103,7 @@ export function Hallway({ onEnter }: { onEnter: () => void }): JSX.Element {
         </div>
       </div>
 
-      <p className={`hall-hint${opening ? ' is-hidden' : ''}`}>Open the door</p>
+      <p className={`hall-hint${opening ? ' is-hidden' : ''}`}>Click the door to go in</p>
     </div>
   )
 }
