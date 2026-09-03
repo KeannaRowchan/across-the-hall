@@ -153,8 +153,11 @@ without touching any code.
 
 ## Before you put real people in this
 
-The sample data ships with **fictional people**. Replacing it with real
-colleagues raises two questions worth settling first:
+`data/` starts empty. Fictional examples live in
+[`examples/sample-data/`](examples/sample-data), which the site does not read —
+copy one into `data/` if you want a template showing every available field.
+
+Adding real colleagues raises two questions worth settling first:
 
 **Consent.** Profiles describe what people are good at and what they want help
 with. That should be opt-in, written by the person themselves, and removable on

@@ -6,6 +6,7 @@ import { PeopleView } from './components/PeopleView'
 import { AsksView } from './components/AsksView'
 import { ProjectsView } from './components/ProjectsView'
 import { LabsView } from './components/LabsView'
+import { FirstRun } from './components/FirstRun'
 
 type TabId = 'people' | 'asks' | 'projects' | 'labs'
 
@@ -123,7 +124,25 @@ export default function App(): JSX.Element {
           </div>
         )}
 
-        {tab === 'people' && (
+        {tab === 'people' && people.length === 0 && (
+          <FirstRun
+            headline="No one has added themselves yet"
+            actionLabel="Add the first profile"
+            actionHref={ADD_ME_URL}
+          >
+            <p>
+              This is a directory of who does what in the department &mdash; the methods people
+              know, what they can help with, and what they are looking for.
+            </p>
+            <p>It only works if people are in it. A reasonable way to start:</p>
+            <ol>
+              <li>Add yourself, so there is something to look at.</li>
+              <li>Add the labs, so people can say which one they are in.</li>
+              <li>Send the link round and let people add themselves.</li>
+            </ol>
+          </FirstRun>
+        )}
+        {tab === 'people' && people.length > 0 && (
           <PeopleView
             people={people}
             labs={labs}
@@ -133,10 +152,35 @@ export default function App(): JSX.Element {
             onFocusHandled={() => setFocusPersonId(null)}
           />
         )}
-        {tab === 'asks' && (
+        {tab === 'asks' && asks.length === 0 && (
+          <FirstRun headline="No asks yet">
+            <p>
+              An ask is a small, specific request with a time on it &mdash; &ldquo;fifteen minutes
+              to sanity-check my EEG montage&rdquo;, not &ldquo;anyone interested in EEG?&rdquo;
+            </p>
+            <p>
+              The point of pricing them is that nobody can accept an open-ended collaboration while
+              they are behind on their own work, but most people can spare a quarter of an hour.
+            </p>
+            <p>Once there are profiles here, this board will suggest who could answer each one.</p>
+          </FirstRun>
+        )}
+        {tab === 'asks' && asks.length > 0 && (
           <AsksView asks={asks} people={people} today={today} onOpenPerson={openPerson} />
         )}
-        {tab === 'projects' && (
+        {tab === 'projects' && projects.length === 0 && (
+          <FirstRun headline="No projects yet">
+            <p>
+              Projects listed here say what stage they are at and what they still need, and the
+              site matches those needs against people&rsquo;s listed skills.
+            </p>
+            <p>
+              Listing something at idea stage is encouraged &mdash; that is the point where a
+              collaborator can still change the design.
+            </p>
+          </FirstRun>
+        )}
+        {tab === 'projects' && projects.length > 0 && (
           <ProjectsView
             projects={projects}
             people={people}
@@ -144,7 +188,21 @@ export default function App(): JSX.Element {
             onOpenPerson={openPerson}
           />
         )}
-        {tab === 'labs' && <LabsView labs={labs} people={people} onOpenPerson={openPerson} />}
+        {tab === 'labs' && labs.length === 0 && (
+          <FirstRun headline="No labs yet">
+            <p>
+              Labs give people something to belong to, and list the equipment and resources a lab
+              could in principle share time on.
+            </p>
+            <p>
+              Add these before profiles if you can &mdash; a profile can then name its lab from a
+              list rather than typing it.
+            </p>
+          </FirstRun>
+        )}
+        {tab === 'labs' && labs.length > 0 && (
+          <LabsView labs={labs} people={people} onOpenPerson={openPerson} />
+        )}
       </main>
 
       <footer className="foot">
